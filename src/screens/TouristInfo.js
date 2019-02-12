@@ -3,6 +3,13 @@ import { Text, View } from 'react-native'
 import {Button} from 'native-base'
 
 export default class TouristInfo extends Component {
+    static navigationOptions= {
+        headerStyle: {
+            backgroundColor: '#FF8694'
+
+        },
+        
+    }
   render() {
     return (
       <View>
