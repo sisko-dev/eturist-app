@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import {StyleSheet, Dimensions,StatusBar} from 'react-native'
 import { Container, Header, Content, Form, Item, Input , Button,Text} from 'native-base';
-export default class FormExample extends Component {
-  
+export default class Login extends Component {
+  static navigationOptions= {
+    headerStyle: {
+      backgroundColor: '#000'
+    }
+  }
   render() {
     const {height: screenHeight} = Dimensions.get('window')
     return (
-      <Container style={{backgroundColor:'#669999' }}>
+      <Container style={{backgroundColor:'#fff' }}>
         <Header />
         <Content>
           <Form style={{flex: 1, height: screenHeight, justifyContent: "center" }}>
@@ -16,7 +20,7 @@ export default class FormExample extends Component {
             <Item last>
               <Input placeholder="Password" />
             </Item>
-            <Button block success><Text>OK</Text></Button>
+            <Button onPress={()=>this.props.navigation.navigate('Dashboard')} transparent dark block ><Text>Prijava</Text></Button>
           </Form>
         </Content>
       </Container>
@@ -26,6 +30,6 @@ export default class FormExample extends Component {
 
 const styles = StyleSheet.create({
    container: {
-       backgroundColor: '#fafafa'
+       backgroundColor: '#fff'
    }
 });
