@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
+import {Provider} from 'unstated'
 
 import {
     createSwitchNavigator,
@@ -25,7 +26,9 @@ import {
 
   export default class App extends Component{
       render(){
-          return <Navigator/>
+          return <Provider>
+              <Navigator/>
+          </Provider>
       }
   }
   
