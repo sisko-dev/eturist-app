@@ -10,21 +10,24 @@ import {
   } from "react-navigation";
 
   import Login from "./screens/Login";  
-  import TouristInfo from './screens/TouristInfo'
+  import Dashboard from './screens/Dashboard'
   import Checkin from './screens/Checkin'
   import AccommodationInfo from './screens/AccommodationInfo'
+  import TouristInfo from './screens/TouristInfo'
 
-  const Dashboard= createStackNavigator({
-      TouristInfo: TouristInfo,
+  const DashboardNavigator= createStackNavigator({
+      Dashboard: Dashboard,
       Checkin: Checkin,
-      AccommodationInfo: AccommodationInfo
+      AccommodationInfo: AccommodationInfo,
+      TouristInfo: TouristInfo
   })
   const Navigator = createSwitchNavigator({
     Login:{
         screen: Login,
-        title: 'Login'
+        title: 'Login',
+        header: null
     },
-    Dashboard: Dashboard
+    Dashboard: DashboardNavigator
   });
   console.disableYellowBox = true
   export default class App extends Component{
