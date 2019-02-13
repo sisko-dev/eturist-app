@@ -56,15 +56,38 @@ export default class TouristInfo extends Component {
         this.setState({loading:  false})
         Alert.alert(
             'Obavijest',
-            'Kontakt izbrisan',
+            'Gost izbrisan',
             [
               {text: 'OK', onPress: () => this.props.navigation.navigate('AccommodationInfo')},
             ],
             {cancelable: false},
           );
+    }) 
+  }
+
+  handleCheckout=(id,data)=>{
+    axios.put(`http://localhost:5656/api/tourists/${id}`,{
+        name: data.name,
+        surname: data.surname,
+        accommodation: data.accommodation,
+        checkindate: data.checkindate,
+        checkoutdate: data.checkoutdate,
+        docnum: data.docnum,
+        checkedin: false
     })
-    
-    
+    .then(res=>{
+        Alert.alert(
+            'Obavijest',
+            'Check-out uspjesan',
+            [
+              {text: 'OK', onPress: () => this.props.navigation.navigate('AccommodationInfo')},
+            ],
+            {cancelable: false},
+          );
+
+    }).catch(error=>{
+        console.log(error)
+    })
   }
   render() {
     const { data } = this.state;
@@ -110,12 +133,17 @@ export default class TouristInfo extends Component {
                 <Label>Datum odlaska</Label>
                 <Input value={data.checkoutdate} />
               </Item>
+              <Item floatingLabel>
+                <Label>Check in: </Label>
+                <Input value={data.checkedin ? 'DA' : 'NE'} />
+              </Item>
             </Form>
           )}
         </Content>
-        <Button info style={{ position: "absolute", bottom: 10, left: 20 }}>
+        <Button onPress={()=>this.handleCheckout(data._id, data)} info style={{ position: "absolute", bottom: 10, left: 20 }}>
           <Text>Check out</Text>
         </Button>
+
 
         <Button onPress={()=>this.handleDelete(data._id)} danger style={{ position: "absolute", bottom: 10, right: 20 }}>
           <Text>Izbrisi </Text>

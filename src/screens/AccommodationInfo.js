@@ -50,6 +50,12 @@ export default class AccommodationInfo extends Component {
         id: id
       })
     }
+
+    newCheckin = () =>{
+      this.props.navigation.navigate('Checkin',{
+        accommodation: this.props.navigation.getParam('accommodation')
+      })
+    }
   render() {
       console.log(this.state.data)
       console.log(this.state)
@@ -62,7 +68,7 @@ export default class AccommodationInfo extends Component {
             </Button>
           </Left>
           <Body>
-            <Title style={{color: 'white', fontSize: 20}}>Pregled</Title>
+            <Title style={{color: 'white', fontSize: 20}}>{this.props.navigation.getParam('accommodation')}</Title>
           </Body>
           <Right><Icon  onPress={()=>this.fetchata()}  name="repeat"></Icon></Right>
         </Header>
@@ -87,7 +93,7 @@ export default class AccommodationInfo extends Component {
             </List>
           )}
         </Content>
-        <Button info style={{position:'absolute', bottom: 10, right: 20}} ><Text>Novi check-in</Text></Button>
+        <Button info style={{position:'absolute', bottom: 10, right: 20}} onPress={()=>this.newCheckin()} ><Text>Novi check-in</Text></Button>
 
       </Container>
     )
