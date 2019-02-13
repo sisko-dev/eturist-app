@@ -31,19 +31,19 @@ export default class Login extends Component {
   };
   handleSubmit = async auth => {
     await auth.login(this.state);
-     this.setState({loading: true})
+    this.setState({ loading: true });
     console.log(auth.state);
     if (auth.state.error === null) {
-      setTimeout(()=>{
+      setTimeout(() => {
         this.props.navigation.navigate("Dashboard");
-        this.setState({loading: false})
-      },1000)
+        this.setState({ loading: false });
+      }, 1000);
+    } else {
+      alert(auth.state.error);
+      await this.setState({
+        loading: false
+      });
     }
-    else{alert(auth.state.error)
-    await this.setState({
-      loading: false
-    })
-  }
   };
   render() {
     const { height: screenHeight } = Dimensions.get("window");
