@@ -88,7 +88,7 @@ export default class ListItemSelectedExample extends Component {
             </List>
           )}
         </Content>
-        <Button info style={{position:'absolute', bottom: 10, right: 20}} ><Text>Novi check-in</Text></Button>
+        <Button info style={{position:'absolute', bottom: 10, right: 20}} onPress={()=>this.props.navigation.navigate('Checkin')} ><Text>Novi check-in</Text></Button>
 
       </Container>
     );

@@ -73,13 +73,12 @@ export default class AccommodationInfo extends Component {
           <Right><Icon  onPress={()=>this.fetchata()}  name="repeat"></Icon></Right>
         </Header>
         <Content>
-        <Text>{this.state.data.length}</Text>
           {this.state.loading ? (
             <ActivityIndicator />
           ) : (
             <List>
             <ListItem itemHeader first>
-              <Text style={{fontSize: 15, fontWeight: 'bold'}}>GOSTI</Text>
+              <Text style={{fontSize: 15, fontWeight: 'bold'}}>GOSTI   -   {this.state.data.length}</Text>
             </ListItem>
 
               {this.state.data.accommodationInfo.map((record, key) => (
