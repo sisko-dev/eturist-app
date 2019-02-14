@@ -11,6 +11,8 @@ export default class AuthContainer extends Container{
             
             this.setState({loading: true})
             if(data.oib!==this.state.oib) await this.setState({error: 'Krivi podaci'})
+            if(data.password!==this.state.password) await this.setState({error: 'Krivi podaci'})
+
             else {
                 await this.setState({error: null})
             }

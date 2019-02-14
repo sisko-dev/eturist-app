@@ -3,7 +3,9 @@ import {
   StyleSheet,
   Dimensions,
   StatusBar,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity,
+  Image
 } from "react-native";
 import {
   Container,
@@ -54,7 +56,9 @@ export default class Login extends Component {
           <Container style={{ backgroundColor: "#fff" }}>
             <Header />
             <Content>
-              {console.log(auth)}
+              <Image style={{height: 550, width: 300 , position: 'absolute', margin: 0, right: 50, top: 20}} source={require('../img/logo.png')}>
+                
+              </Image>
               <Form
                 style={{
                   flex: 1,
@@ -79,14 +83,13 @@ export default class Login extends Component {
                 {this.state.loading ? (
                   <ActivityIndicator />
                 ) : (
-                  <Button
+                  <TouchableOpacity
                     onPress={() => this.handleSubmit(auth)}
-                    transparent
-                    dark
-                    block
+                    style={{position: 'absolute', bottom: 180 , right: 130, width: 120, height: 50, backgroundColor: '#FF8694', flex: 1, justifyContent:'center',alignItems:'center', borderRadius: 5}}
+          
                   >
-                    <Text>Prijava</Text>
-                  </Button>
+                    <Text style={{color: 'white', fontWeight: 'bold'}}>Prijava</Text>
+                  </TouchableOpacity>
                 )}
               </Form>
             </Content>
